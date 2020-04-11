@@ -1,7 +1,9 @@
 import App from './App.svelte';
 
+const target = document.querySelector('div[data-id="svelte-app"]');
+
 const app = replaceContainer(App, {
-	target: document.querySelector('div#app'),
+	target,
 	props: {
 		name: '🍕'
 	}
@@ -16,4 +18,4 @@ function replaceContainer(Component, options) {
 	return component;
 }
 
-export default app;
+export default app; 
