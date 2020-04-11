@@ -12,13 +12,13 @@ export default class Svelte extends LightningElement {
       return;
     }
     this.hasInitialRender = true;
-    let document = this.template;
+
     Promise.all([
       loadScript(this, svelteApp + '/bundle.js'),
       loadStyle(this, svelteApp + '/bundle.css')
     ])
     .then(() => {
-      console.log('success');
+      mount(this.template.querySelector('div[data-id="app"]'), { name: '🍕'});
     })
     .catch(error => console.error(error))
   }
