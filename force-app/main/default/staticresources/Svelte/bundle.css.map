@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../../../../svelte/App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\texport let name = '🍕';\n</script>\n\n<main>\n\t<h1>Hello {name}!</h1>\n</main>\n\n<style>\n\tmain {\n\t\ttext-align: center;\n\t\tpadding: 1em;\n\t\tmax-width: 240px;\n\t\tmargin: 0 auto;\n\t}\n</style>"
+  ],
+  "names": [],
+  "mappings": "AASC,IAAI,cAAC,CAAC,AACL,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,GAAG,CACZ,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,CAAC,CAAC,IAAI,AACf,CAAC"
+}
