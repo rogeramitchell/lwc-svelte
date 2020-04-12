@@ -1,8 +1,4 @@
 <script>
-  // imports
-  import { createEventDispatcher } from 'svelte';
-  const dispatch = createEventDispatcher();
-
   // props
   export let contacts = [];
   export let eventBroker;
