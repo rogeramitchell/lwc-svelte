@@ -1,9 +1,24 @@
 <script>
+	// imports
+	import ContactList from './ContactList.svelte';
+	
+	// props
 	export let name = '🍕';
+	export let getContacts;
+	let contacts = [];
+
+	// functions
+	let handleClick = event => {
+		console.log('You clicked me!')
+	}
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
+	<button class="slds-button slds-button--brand" on:click={handleClick}>
+		Get Contacts
+	</button>
+	<ContactList {contacts} />
 </main>
 
 <style>
