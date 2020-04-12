@@ -1,5 +1,6 @@
 import { LightningElement } from 'lwc';
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
+import getContacts from '@salesforce/apex/SvelteController.getContacts';
 
 // import Svelte static resource
 import svelteApp from '@salesforce/resourceUrl/Svelte';
@@ -18,7 +19,10 @@ export default class Svelte extends LightningElement {
       loadStyle(this, svelteApp + '/bundle.css')
     ])
     .then(() => {
-      mount(this.template.querySelector('div[data-id="app"]'), { name: '🍕🍕🍕🍕🍕'});
+      mount(this.template.querySelector('div[data-id="app"]'), {
+        name: '🍕🍕🍕🍕🍕',
+        getContacts
+      });
     })
     .catch(error => console.error(error))
   }

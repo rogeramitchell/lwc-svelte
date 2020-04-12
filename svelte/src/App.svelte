@@ -9,7 +9,11 @@
 
 	// functions
 	let handleClick = event => {
-		console.log('You clicked me!')
+		getContacts()
+			.then(result => {
+				contacts = result;
+			})
+			.catch(error => console.error(error))
 	}
 </script>
 
