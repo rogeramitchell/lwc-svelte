@@ -5,6 +5,7 @@
 	// props
 	export let name = '🍕';
 	export let getContacts;
+	export let updateContactToPizza;
 	let contacts = [];
 
 	// functions
@@ -15,6 +16,21 @@
 			})
 			.catch(error => console.error(error))
 	}
+
+	let handleNameToPizza = event => {
+		let contactId = event.detail.id;
+		console.log('hello')
+		console.log(contactId);
+		return;
+		// updateContactToPizza({ contactId })
+			// .then(result => {
+				// let pizzaContactIndex = contacts.findIndex(contact => contact.Id === contactId);
+				// let pizzaContact = Object.assign({}, contacts[pizzaContactIndex]);
+				// pizzaContact.Name = '🍕';
+				// contacts[pizzaContactIndex] = pizzaContact;
+			// })
+			// .catch(error => console.error(error))
+	}
 </script>
 
 <main>
@@ -22,7 +38,7 @@
 	<button class="slds-button slds-button--brand" on:click={handleClick}>
 		Get Contacts
 	</button>
-	<ContactList {contacts} />
+	<ContactList {contacts} on:changeNameToPizza={handleNameToPizza} />
 </main>
 
 <style>
