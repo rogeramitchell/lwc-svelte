@@ -5,18 +5,19 @@
 
   // props
   export let contacts = [];
+  export let eventBroker;
 
   // computed props
   $: numberOfContacts = contacts.length;
 
   // functions
   function handleClick(event) {
-    console.log(event.target.id);
-    event.preventDefault();
-    dispatch('changeNameToPizza', {
-      id: event.target.id
-    });
-    console.log('here')
+    eventBroker({
+      name: 'changeNameToPizza',
+      detail: {
+        id: event.target.id
+      }
+    })
   }
 </script>
 <div>

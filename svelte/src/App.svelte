@@ -19,17 +19,31 @@
 
 	let handleNameToPizza = event => {
 		let contactId = event.detail.id;
-		console.log('hello')
-		console.log(contactId);
-		return;
-		// updateContactToPizza({ contactId })
-			// .then(result => {
-				// let pizzaContactIndex = contacts.findIndex(contact => contact.Id === contactId);
-				// let pizzaContact = Object.assign({}, contacts[pizzaContactIndex]);
-				// pizzaContact.Name = '🍕';
-				// contacts[pizzaContactIndex] = pizzaContact;
-			// })
-			// .catch(error => console.error(error))
+		updateContactToPizza({ contactId })
+			.then(result => {
+				let pizzaContactIndex = contacts.findIndex(contact => contact.Id === contactId);
+				let pizzaContact = Object.assign({}, contacts[pizzaContactIndex]);
+				pizzaContact.Name = '🍕 🍕';
+				contacts[pizzaContactIndex] = pizzaContact;
+			})
+			.catch(error => console.error(error))
+	}
+
+	/*
+		it seems like we can't make use of dispatch to publish
+		custom  events from child components and handle those
+		events with callback functions on the parent components
+
+		so, as an LWC / Locker Service workaround, pass a function
+		down from the parent component that acts as a broker
+		service to pass events to the appropriate callbacks
+	*/
+	let eventBroker = event => {
+		switch(event.name) {
+			case 'changeNameToPizza': 
+				handleNameToPizza(event);
+				break;
+		}
 	}
 </script>
 
@@ -38,7 +52,7 @@
 	<button class="slds-button slds-button--brand" on:click={handleClick}>
 		Get Contacts
 	</button>
-	<ContactList {contacts} on:changeNameToPizza={handleNameToPizza} />
+	<ContactList {contacts} {eventBroker} />
 </main>
 
 <style>
