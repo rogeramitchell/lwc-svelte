@@ -3,7 +3,6 @@
 	import ContactList from './ContactList.svelte';
 	
 	// props
-	export let document;
 	export let name = '🍕';
 	export let getContacts;
 	export let updateContactToPizza;

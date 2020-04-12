@@ -10,20 +10,24 @@
   $: numberOfContacts = contacts.length;
 
   // functions
-  let handleClick = event => {
+  function handleClick(event) {
+    console.log(event.target.id);
+    event.preventDefault();
     dispatch('changeNameToPizza', {
-      contactId: event.target.id
+      id: event.target.id
     });
+    console.log('here')
   }
 </script>
-
-<p>
-  And then there were {numberOfContacts === 0 ? 'no' : 'some'} contacts...
+<div>
+  <p>
+    And then there were {numberOfContacts === 0 ? 'no' : 'some'} contacts...
   </p>
-<ul>
-  {#each contacts as contact (contact.Id)}
-  <li>
-    {contact.Name} • <a id={contact.Id} on:click={handleClick}>Click to change name to 🍕</a>
-  </li>
-  {/each}
-</ul>
+  <ul>
+    {#each contacts as contact (contact.Id)}
+    <li>
+      {contact.Name} • <a id={contact.Id} on:click={handleClick}>Click to change name to 🍕</a>
+    </li>
+    {/each}
+  </ul>
+</div>
