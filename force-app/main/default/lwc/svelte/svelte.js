@@ -18,7 +18,7 @@ export default class Svelte extends LightningElement {
       loadStyle(this, svelteApp + '/bundle.css')
     ])
     .then(() => {
-      mount(this.template.querySelector('div[data-id="app"]'), { name: '🍕'});
+      mount(this.template.querySelector('div[data-id="app"]'), { name: '🍕🍕🍕🍕🍕'});
     })
     .catch(error => console.error(error))
   }
