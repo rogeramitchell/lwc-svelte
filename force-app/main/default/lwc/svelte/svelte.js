@@ -21,6 +21,7 @@ export default class Svelte extends LightningElement {
     ])
     .then(() => {
       mount(this.template.querySelector('div[data-id="app"]'), {
+        document: this.template,
         name: '🍕🍕🍕🍕🍕',
         getContacts,
         updateContactToPizza
