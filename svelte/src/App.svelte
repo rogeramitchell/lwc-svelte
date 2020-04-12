@@ -18,4 +18,8 @@
     box-shadow: var(--lwc-pageHeaderShadow,0 2px 2px 0 rgba(0, 0, 0, 0.10));
     border: var(--lwc-borderWidthThin,1px) solid var(--lwc-pageHeaderColorBorder,rgb(221, 219, 218));
 	}
+
+	main h1 {
+		font-size: 2rem;
+	}
 </style>
