@@ -12,7 +12,7 @@
   // functions
   let handleClick = event => {
     dispatch('changeNameToPizza', {
-      id: event.target.id
+      contactId: event.target.id
     });
   }
 </script>
