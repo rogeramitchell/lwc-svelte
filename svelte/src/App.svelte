@@ -1,6 +1,10 @@
 <script>
 	// imports
 	import ContactList from './ContactList.svelte';
+	import ContactListStore from './ContactListStore.svelte';
+
+	// import data stores
+	import { storeContacts } from './Stores.js';
 	
 	// props
 	export let name = '🍕';
@@ -13,6 +17,9 @@
 		getContacts()
 			.then(result => {
 				contacts = result;
+
+				// we can also update the store's version of this too!
+				storeContacts.set(result);
 			})
 			.catch(error => console.error(error))
 	}
@@ -52,7 +59,20 @@
 	<button class="slds-button slds-button--brand" on:click={handleClick}>
 		Get Contacts
 	</button>
-	<ContactList {contacts} {eventBroker} />
+	<div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+		<div>
+			<h2>We can pass the contacts as a prop from parent to child...</h2>
+			<ContactList {contacts} {eventBroker} />
+		</div>
+		<div>
+			<h2>...or as a reference to the store's version of contacts...</h2>
+			<ContactList contacts={$storeContacts} {eventBroker} />
+		</div>
+		<div>
+			<h2>...or the child component can just reference the store itself!</h2>
+			<ContactListStore />
+		</div>
+	</div>
 </main>
 
 <style>
@@ -70,5 +90,9 @@
 
 	main h1 {
 		font-size: 2rem;
+	}
+
+	main h2 {
+		font-size: 1.5rem;
 	}
 </style>
